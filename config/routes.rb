@@ -7,7 +7,7 @@ Rails.application.routes.draw do
       end
       post 'users/login', to: 'users#login'
       get '/users/:id/doctors', to: 'doctors#show_user_doctors'   
-      get '/appointments', to: 'appointments#index'
+      get '/appointments', to: 'appointments#show_all'
       get '/appointments/:id', to: 'appointments#show'
 
       get '/doctors', to: 'doctors#index'   
