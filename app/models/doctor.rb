@@ -1,4 +1,4 @@
 class Doctor < ApplicationRecord
+  belongs_to :user
   has_many :appointments
-  has_many :users, through: :appointments, foreign_key: :user_id
 end
