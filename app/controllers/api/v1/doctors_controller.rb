@@ -12,6 +12,7 @@ class Api::V1::DoctorsController < ApplicationController
   def create
     # Only the admin user should create the user
     @doctor = Doctor.new(doctor_params)
+    @doctor.user_id = params[:user_id]
     if @doctor.save
       render json: @doctor, status: :created
     else
@@ -30,8 +31,13 @@ class Api::V1::DoctorsController < ApplicationController
 
   def destroy
     @doctor = Doctor.find(params[:id])
-    @doctor.destroy
-    render json: Doctor.all
+    if params[:user_id].to_i == @doctor.user_id
+      @doctor.appointments.destroy_all
+      @doctor.destroy
+      render json: {message: "Doctor #{@doctor.name} deleted!"}
+    else
+      render json: { error: 'Only the Owner can delete this doctor' }, status: :forbidden
+    end
   end
 
   def show_user_doctors
