@@ -33,5 +33,11 @@ RSpec.describe User, type: :model do
       user = User.new(name: 'a' * 50)
       expect(user).to be_valid
     end
+
+    it 'is not valid with a name that already exists' do
+      @user1 = User.create(name: 'abc')
+      @user2 = User.new(name: 'abc')
+      expect(@user2).to_not be_valid
+    end
   end
 end
