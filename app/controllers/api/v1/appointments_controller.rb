@@ -10,8 +10,8 @@ class Api::V1::AppointmentsController < ApplicationController
   # POST /appointments
   def create
     @appointment = Appointment.new(appointment_params)
-    @appointment.user_id = current_user.id
-    if appointment.save
+    @appointment.user_id = params[:user_id]
+    if @appointment.save
       render json: @appointment, status: :created
     else
       render json: { error: 'Error creating appointment' }, status: :unprocessable_entity
