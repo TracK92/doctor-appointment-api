@@ -12,7 +12,11 @@ class Api::V1::DoctorsController < ApplicationController
   def create
     # Only the admin user should create the user
     @doctor = Doctor.new(doctor_params)
-    render json: @doctor
+    if @doctor.save
+      render json: @doctor, status: :created
+    else
+      render json: { error: 'Error creating doctor' }, status: :unprocessable_entity
+    end
   end
 
   def update
@@ -30,9 +34,14 @@ class Api::V1::DoctorsController < ApplicationController
     render json: Doctor.all
   end
 
+  def show_user_doctors
+    @doctors = Doctor.all.where(user_id: params[:id])
+    render json: @doctors
+  end
+
   private
 
   def doctor_params
-    params.require(:doctor).permit(:name, :specialization, :photo)
+    params.require(:doctor).permit(:user_id, :name, :specialization, :photo)
   end
 end
