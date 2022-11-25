@@ -21,4 +21,8 @@ class Api::V1::UsersController < ApplicationController
       render json: { error: 'Username does not exists, please sign up' }, status: :not_found
     end
   end
+
+  def user_params
+    params.require(:user).permit(:name)
+  end
 end
