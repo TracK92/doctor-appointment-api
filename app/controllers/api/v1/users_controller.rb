@@ -4,8 +4,13 @@ class Api::V1::UsersController < ApplicationController
     render json: @users
   end
 
+  def show
+    @user = User.find(params[:id])
+    render json: @user
+  end
+
   def create
-    if User.find(name: user_params[:name])
+    if User.find_by_name(user_params[:name])
       render json: { error: 'Username already exists, please login or use another username to sign up' },
              status: :unauthorized
     else
@@ -15,6 +20,7 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
+
     if User.find(name: user_params[:name])
       render json: { message: 'User created correctly.' }, status: :ok
     else
