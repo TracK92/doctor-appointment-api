@@ -9,9 +9,10 @@ class Api::V1::DoctorsController < ApplicationController
     render json: @doctor
   end
 
-
   def create
+    # Only the admin user should create the user
     @doctor = Doctor.new(doctor_params)
+    render json: @doctor
   end
 
   def update
