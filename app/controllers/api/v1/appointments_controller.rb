@@ -1,13 +1,18 @@
 class Api::V1::AppointmentsController < ApplicationController
   before_action :set_appointment, only: %i[show update destroy]
 
-  # GET /appointments
+  # GET users/:id/appointments
   def index
+    @appointments = Appointment.all.where(user_id: params[:user_id])
+    render json: @appointments, status: :ok
+  end
+  # GET /appointments
+  def show_all
     @appointments = Appointment.all
     render json: @appointments, status: :ok
   end
 
-  # POST /appointments
+  # POST users/:id/appointments
   def create
     @appointment = Appointment.new(appointment_params)
     @appointment.user_id = params[:user_id]
