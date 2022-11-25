@@ -20,9 +20,9 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
-
-    if User.find(name: user_params[:name])
-      render json: { message: 'User created correctly.' }, status: :ok
+    if User.find_by_name(user_params[:name])
+      @user = User.find_by_name(user_params[:name])
+      render json: @user, status: :accepted
     else
       render json: { error: 'Username does not exists, please sign up' }, status: :not_found
     end
