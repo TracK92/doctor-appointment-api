@@ -4,6 +4,7 @@ Rails.application.routes.draw do
       resources :users, only: [:index, :create, :login] do
         resources :appointments, only: [:index, :create, :show, :update, :destroy]
       end
+      post 'users/login', to: 'users#login'
       get '/users/:id/doctors', to: 'doctors#show_user_doctors'   
       get '/appointments', to: 'appointments#index'
       get '/appointments/:id', to: 'appointments#show'
