@@ -6,6 +6,7 @@ class Api::V1::AppointmentsController < ApplicationController
     @appointments = Appointment.all.where(user_id: params[:user_id])
     render json: @appointments, status: :ok
   end
+
   # GET /appointments
   def show_all
     @appointments = Appointment.all
