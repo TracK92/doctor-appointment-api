@@ -5,6 +5,8 @@ class Appointment < ApplicationRecord
   # validations
   # validate :date_of_appointment_cannot_be_in_the_past
   validates :description, presence: true, length: { in: 3..150 }
-  validates :date_of_appointment, presence: true, format: { with: /\A\d{4}-\d{2}-\d{2}\z/, message: 'Date format should be YYYY-MM-DD' }, inclusion: { in: Date.today..Date.today + 5.years, message: 'Date should be in the future' }
-  validates :time_of_appointment, presence: true, format: { with: /\A\d{2}:\d{2}\z/, message: 'Time format should be HH:MM' }
+  validates :date_of_appointment, presence: true,
+                                  format: { with: /\A\d{4}-\d{2}-\d{2}\z/, message: 'Date format should be YYYY-MM-DD' }, inclusion: { in: Date.today..Date.today + 5.years, message: 'Date should be in the future' }
+  validates :time_of_appointment, presence: true,
+                                  format: { with: /\A\d{2}:\d{2}\z/, message: 'Time format should be HH:MM' }
 end

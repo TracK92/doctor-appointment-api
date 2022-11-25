@@ -53,29 +53,34 @@ RSpec.describe Appointment, type: :model do
       appointment = Appointment.new(time_of_appointment: '12:1')
       expect(appointment).to_not be_valid
     end
- 
+
     it 'is valid with a description between 3 and 150 characters' do
-      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc', date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
+      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc',
+                                    date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
       expect(appointment).to be_valid
     end
 
     it 'is valid with a description between 3 and 150 characters' do
-      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'a' * 150, date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
+      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'a' * 150,
+                                    date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
       expect(appointment).to be_valid
     end
 
     it 'is valid with a date_of_appointment format of YYYY-MM-DD' do
-      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc', date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
+      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc',
+                                    date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
       expect(appointment).to be_valid
     end
 
     it 'is valid with a time_of_appointment format of HH:MM' do
-      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc', date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
+      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc',
+                                    date_of_appointment: '2024-01-01', time_of_appointment: '12:00')
       expect(appointment).to be_valid
     end
 
     it 'is not valid with a date_of_appointment in the past' do
-      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc', date_of_appointment: '2020-01-01', time_of_appointment: '12:00')
+      appointment = Appointment.new(user: @user, doctor: @doctor, description: 'abc',
+                                    date_of_appointment: '2020-01-01', time_of_appointment: '12:00')
       expect(appointment).to_not be_valid
     end
   end
