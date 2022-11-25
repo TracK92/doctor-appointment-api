@@ -34,7 +34,7 @@ class Api::V1::DoctorsController < ApplicationController
     if params[:user_id].to_i == @doctor.user_id
       @doctor.appointments.destroy_all
       @doctor.destroy
-      render json: {message: "Doctor #{@doctor.name} deleted!"}
+      render json: { message: "Doctor #{@doctor.name} deleted!" }
     else
       render json: { error: 'Only the Owner can delete this doctor' }, status: :forbidden
     end
