@@ -9,7 +9,6 @@ class Api::V1::DoctorsController < ApplicationController
     render json: @doctor
   end
 
-
   def create
     @doctor = Doctor.new(doctor_params)
   end
