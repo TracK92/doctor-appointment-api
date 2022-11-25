@@ -2,7 +2,8 @@ require 'rails_helper'
 
 RSpec.describe Doctor, type: :model do
   before(:each) do
-    @doctor = Doctor.create(name: 'Dr. John Doe', specialization: 'Pediatrics', photo: 'https://example.com/photo.jpg')
+    @user = User.create(name: 'Jane')
+    @doctor = Doctor.create(user: @user, name: 'Dr. John Doe', specialization: 'Pediatrics', photo: 'https://example.com/photo.jpg')
   end
 
   describe 'associations' do
