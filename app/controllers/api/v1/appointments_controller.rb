@@ -1,5 +1,5 @@
 class Api::V1::AppointmentsController < ApplicationController
-
+  before_action :set_appointment, only: [:show, :update, :destroy]
   
   # GET /appointments
   def index
@@ -41,6 +41,16 @@ class Api::V1::AppointmentsController < ApplicationController
   def destroy
     appointment.destroy
     render json: appointment
+  end
+
+  private
+
+  def set_appointment
+    appointment = Appointment.find(params[:id])
+  end
+
+  def appointment_params
+    params.require(:appointment).permit(:date_of_appointment, :time_of_appointment, :description, :doctor_id)
   end
 
 end
