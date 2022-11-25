@@ -20,7 +20,6 @@ class Api::V1::UsersController < ApplicationController
   end
 
   def login
-
     if User.find(name: user_params[:name])
       render json: { message: 'User created correctly.' }, status: :ok
     else
