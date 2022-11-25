@@ -1,9 +1,5 @@
-<<<<<<< HEAD
-![](https://img.shields.io/badge/Microverse-blueviolet)
-=======
 
-# README
->>>>>>> ebe8ac536571a74e12872daf0dc42fcbf0e19b98
+![](https://img.shields.io/badge/Microverse-blueviolet)
 
 # DOCTOR APPOINTMENT BOOKING - BACKEND
 
@@ -34,8 +30,6 @@ Basic knowlwedge of computers, git and an editor most prefarably visual studio c
 ```
 bundle install
 ```
-
-<<<<<<< HEAD
 ### Set-up Your local database
 
 - Follow these steps to setup a local databse for your project: 
@@ -84,6 +78,4 @@ Give a ⭐️ if you like this project!
 ## 📝 License
 
 This project is [MIT](./MIT.md) licensed.
-=======
-* ...
->>>>>>> ebe8ac536571a74e12872daf0dc42fcbf0e19b98
+
