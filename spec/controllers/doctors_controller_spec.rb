@@ -19,6 +19,13 @@ RSpec.describe 'Doctors', type: %w[request feature] do
 
   it 'should render a doctors list' do
     get '/api/v1/doctors'
-    expect(response).to have_http_status(200)
+    expect(response.status).to eq(200)
+    expect(JSON.parse(response.body).length).to eq(0)
+  end
+
+  it 'should show a doctor' do
+    get '/api/v1/doctors'
+    expect(response.status).to eq(200)
+    expect(JSON.parse(response.body)).to eq([])
   end
 end

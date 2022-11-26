@@ -28,5 +28,4 @@ RSpec.describe 'Users', type: %w[request feature] do
     expect(response).to have_http_status(200)
     expect(JSON.parse(response.body)).to eq([])
   end
-
 end
