@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe 'Users', type: %w[request feature] do
   before do
     post '/api/v1/users',
-            params: { user: { name: 'Alex'} }
+         params: { user: { name: 'Alex' } }
     @user = User.last
   end
 
@@ -13,7 +13,7 @@ RSpec.describe 'Users', type: %w[request feature] do
 
   it 'logs in a user' do
     post '/api/v1/users/login',
-            params: { user: { name: 'Alex'} }
+         params: { user: { name: 'Alex' } }
     expect(response).to have_http_status(202)
     expect(JSON.parse(response.body)['name']).to_not be_nil
   end
