@@ -5,7 +5,7 @@ class Api::V1::AppointmentsController < ApplicationController
   def index
     @appointments = Appointment.all.where(user_id: params[:user_id])
     if @appointments.empty?
-      render json: {message: 'You have no appoinments yet'}
+      render json: { message: 'You have no appoinments yet' }
     else
       render json: @appointments, status: :ok
     end
