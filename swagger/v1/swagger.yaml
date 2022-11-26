@@ -1,0 +1,168 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/api/v1/users/{user_id}/appointments":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: list appointments
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create appointment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/appointments/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show appointment
+      responses:
+        '200':
+          description: successful
+    patch:
+      summary: update appointment
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update appointment
+      responses:
+        '200':
+          description: successful
+    delete:
+      summary: delete appointment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/appointments":
+    get:
+      summary: show_all appointment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/appointments/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show appointment
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/doctors":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    post:
+      summary: create doctor
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{user_id}/doctors/{id}":
+    parameters:
+    - name: user_id
+      in: path
+      description: user_id
+      required: true
+      schema:
+        type: string
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    delete:
+      summary: delete doctor
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/{id}/doctors":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show_user_doctors doctor
+      responses:
+        '200':
+          description: successful
+  "/api/v1/doctors":
+    get:
+      summary: list doctors
+      responses:
+        '200':
+          description: successful
+  "/api/v1/doctors/{id}":
+    parameters:
+    - name: id
+      in: path
+      description: id
+      required: true
+      schema:
+        type: string
+    get:
+      summary: show doctor
+      responses:
+        '200':
+          description: successful
+    put:
+      summary: update doctor
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users":
+    get:
+      summary: list users
+      responses:
+        '200':
+          description: successful
+    post:
+      summary: create user
+      responses:
+        '200':
+          description: successful
+  "/api/v1/users/login":
+    post:
+      summary: login user
+      responses:
+        '200':
+          description: successful
+servers:
+- url: https://{defaultHost}
+  variables:
+    defaultHost:
+      default: '127.0.0.1.3000'
