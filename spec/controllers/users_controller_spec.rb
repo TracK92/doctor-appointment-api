@@ -15,6 +15,7 @@ RSpec.describe 'Users', type: %w[request feature] do
     post '/api/v1/users/login',
             params: { user: { name: 'Alex'} }
     expect(response).to have_http_status(202)
+    expect(JSON.parse(response.body)['name']).to_not be_nil
   end
 
   it 'should render a users doctors' do
