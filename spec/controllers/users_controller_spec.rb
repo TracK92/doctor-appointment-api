@@ -16,4 +16,10 @@ RSpec.describe 'Users', type: %w[request feature] do
             params: { user: { name: 'Alex'} }
     expect(response).to have_http_status(202)
   end
+
+  it 'should render a users doctors' do
+    get '/api/v1/users/1/doctors'
+    expect(response).to have_http_status(200)
+  end
+
 end
