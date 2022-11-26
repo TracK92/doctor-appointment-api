@@ -22,4 +22,10 @@ RSpec.describe 'Users', type: %w[request feature] do
     expect(response).to have_http_status(200)
   end
 
+  it 'should render a users appointments' do
+    get '/api/v1/users/1/appointments'
+    expect(response).to have_http_status(200)
+    expect(JSON.parse(response.body)).to eq([])
+  end
+
 end
