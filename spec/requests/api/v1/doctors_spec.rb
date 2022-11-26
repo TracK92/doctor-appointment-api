@@ -1,7 +1,6 @@
 require 'swagger_helper'
 
 RSpec.describe 'api/v1/doctors', type: :request do
-
   path '/api/v1/users/{user_id}/doctors' do
     # You'll want to customize the parameter types...
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
@@ -65,10 +64,8 @@ RSpec.describe 'api/v1/doctors', type: :request do
   end
 
   path '/api/v1/doctors' do
-
     get('list doctors') do
       response(200, 'successful') do
-
         after do |example|
           example.metadata[:response][:content] = {
             'application/json' => {
