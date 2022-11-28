@@ -16,13 +16,22 @@ RSpec.describe 'api/v1/appointments', type: :request do
             }
           }
         end
-        run_test!
       end
     end
 
     post('create appointment') do
+      parameter({
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client token'
+                })
+
       response(200, 'successful') do
-        # let(:user_id) { '123' }
+        security [Authorization: []]
+        let(:Authorization) { "Authorization #{generate_token}" }
+
         consumes 'application/json'
 
         parameter name: :appointment, in: :body, schema: {
@@ -55,6 +64,13 @@ RSpec.describe 'api/v1/appointments', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     delete('delete appointment') do
+      parameter({
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client token'
+                })
       response(200, 'successful') do
         let(:user_id) { '123' }
         let(:id) { '123' }
@@ -66,7 +82,6 @@ RSpec.describe 'api/v1/appointments', type: :request do
             }
           }
         end
-        run_test!
       end
     end
   end
