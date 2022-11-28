@@ -3,12 +3,14 @@ class Api::V1::AppointmentsController < ApplicationController
 
   # GET users/:id/appointments
   def index
+    # List the appointments for a specific user
     @appointments = Appointment.all.where(user_id: params[:user_id])
     render json: @appointments, status: :ok
   end
 
   # GET /appointments
   def show_all
+    # Lists all the appointments
     @appointments = Appointment.all
     render json: @appointments, status: :ok
   end
@@ -39,10 +41,14 @@ class Api::V1::AppointmentsController < ApplicationController
     end
   end
 
-  # DELETE /appointments/1
+  # DELETE users/1/appointments/1
   def destroy
-    @appointment.destroy
-    render json: @appointment, status: :ok
+    if params[:user_id].to_i == @appointment.user_id
+      @appointment.destroy
+      render json: { message: "Your appointment with doctor: #{@appointment.doctor.name} canceled!" }
+    else
+      render json: { error: 'Only the Client  can cancel this appointment' }, status: :forbidden
+    end
   end
 
   private
@@ -52,6 +58,6 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date_of_appointment, :time_of_appointment, :description, :doctor_id)
+    params.require(:appointments).permit(:date_of_appointment, :time_of_appointment, :description, :doctor_id)
   end
 end
