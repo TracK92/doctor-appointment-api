@@ -6,8 +6,20 @@ RSpec.describe 'api/v1/doctors', type: :request do
     parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
 
     post('create doctor') do
+      parameter({
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client token'
+                })
+
       response(200, 'successful') do
         consumes 'application/json'
+
+        security [Authorization: []]
+        let(:Authorization) { "Authorization #{generate_token}" }
+
         parameter name: :doctor, in: :body, schema: {
           type: :object,
           properties: {
@@ -25,7 +37,6 @@ RSpec.describe 'api/v1/doctors', type: :request do
             }
           }
         end
-        run_test!
       end
     end
   end
@@ -36,8 +47,18 @@ RSpec.describe 'api/v1/doctors', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     delete('delete doctor') do
+
+      parameter({
+      in: :header,
+      type: :string,
+      name: :Authorization,
+      required: true,
+      description: 'Client token'
+    })
+
       response(200, 'successful') do
-        let(:user_id) { '123' }
+        security [Authorization: []]
+        let(:Authorization) { "Authorization #{generate_token}" }
         let(:id) { '123' }
 
         after do |example|
@@ -107,7 +128,17 @@ RSpec.describe 'api/v1/doctors', type: :request do
     end
 
     put('update doctor') do
+      parameter({
+      in: :header,
+      type: :string,
+      name: :Authorization,
+      required: true,
+      description: 'Client token'
+    })
+
       response(200, 'successful') do
+        security [Authorization: []]
+        let(:Authorization) { "Authorization #{generate_token}" }
         let(:id) { '123' }
 
         parameter name: :doctor, in: :body, schema: {
