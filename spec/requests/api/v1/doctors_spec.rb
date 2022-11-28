@@ -47,14 +47,13 @@ RSpec.describe 'api/v1/doctors', type: :request do
     parameter name: 'id', in: :path, type: :string, description: 'id'
 
     delete('delete doctor') do
-
       parameter({
-      in: :header,
-      type: :string,
-      name: :Authorization,
-      required: true,
-      description: 'Client token'
-    })
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client token'
+                })
 
       response(200, 'successful') do
         security [Authorization: []]
@@ -129,12 +128,12 @@ RSpec.describe 'api/v1/doctors', type: :request do
 
     put('update doctor') do
       parameter({
-      in: :header,
-      type: :string,
-      name: :Authorization,
-      required: true,
-      description: 'Client token'
-    })
+                  in: :header,
+                  type: :string,
+                  name: :Authorization,
+                  required: true,
+                  description: 'Client token'
+                })
 
       response(200, 'successful') do
         security [Authorization: []]
