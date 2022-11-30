@@ -17,7 +17,7 @@ class Api::V1::UsersController < ApplicationController
       @user = User.create(user_params)
       render json: @user, status: :ok
     end
-  end
+  end   
 
   def login
     if User.find_by_name(user_params[:name])
