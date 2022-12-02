@@ -1,19 +1,23 @@
 databases:
-  - name: doctors_appointment
-    databaseName: doctors_appointment
-    user: doctors_appointment
-previewsEnabled: true
+  - name: postgres
+    ipAllowList: []
+
 services:
   - type: web
-    name: doctors_appointment
+    name: rails
     env: ruby
     buildCommand: "./bin/render-build.sh"
-    startCommand: "bundle exec puma -C config/puma.rb"
+    startCommand: bundle exec rails s
     envVars:
-      - key: DATABASE_URL
-        fromDatabase:
-          name: doctors_appointment
-          property: connectionString
       - key: RAILS_MASTER_KEY
         sync: false
+      - key: DATABASE_URL
+        fromDatabase:
+          name: postgres
+          property: connectionString
+      - type: redis
+        name: redis
+        ipAllowList: []
+        plan: free
+        maxmemoryPolicy: noeviction
         
