@@ -15,7 +15,7 @@ class Api::V1::UsersController < ApplicationController
              status: :unauthorized
     else
       @user = User.create(user_params)
-      render json: { message: 'User created correctly.' }, status: :ok
+      render json: @user, status: :ok
     end
   end
 
