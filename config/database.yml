@@ -1,4 +1,3 @@
-
 default: &default
   adapter: postgresql
   encoding: unicode
@@ -6,15 +5,15 @@ default: &default
   
 development:
   <<: *default
-  database: doctor_appointment_api_development
+  database:  doctors_appointment_development
 
 test:
   <<: *default
-  database: doctor_appointment_api_test
+  database:  doctors_appointment_test
 
 production:
   <<: *default
-  database: doctor_appointment_api_production
-  username: doctor_appointment_api
-  password: <%= ENV["DOCTOR_APPOINTMENT_API_DATABASE_PASSWORD"] %>
+  database:  doctors_appointment_production
+  username:  doctors_appointment
+  password: <%= ENV["DOCTORS_APPOINTMENT_DATABASE_PASSWORD"] %>
   url: <%= ENV["DATABASE_URL"] %>
