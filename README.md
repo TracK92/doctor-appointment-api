@@ -10,6 +10,16 @@
 - RSpec - Testing
 
 
+Project schema: 
+![here](uml-diagram.png)
+
+## Link to the Frontend
+[Frontend](https://github.com/TracK92/doctor-appointment-front-end)
+
+## Deployed version
+[Render](https://book-doctors-appointment.onrender.com/api-docs/index.html)
+
+
 ## Getting Started
 To get a local copy up and running follow these simple example steps.
 
@@ -50,7 +60,7 @@ rails db:seed
 👤 **Aleksandra Ujvari**
 
 - GitHub: [@digia3d](https://github.com/digia3d)
-- LinkedIn: [Aleksandra (Digital Marketing A3D) Ujvari](https://www.linkedin.com/in/aleksandra-ujvari-85235a210/) 
+- LinkedIn: [Aleksandra (Alex) Ujvari](https://www.linkedin.com/in/aleksandraujvari/) 
 - Twitter: [@ujvari65](https://twitter.com/ujvari65)
 
 👤 **Abby Nyakara**
