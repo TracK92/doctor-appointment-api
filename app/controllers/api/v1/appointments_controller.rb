@@ -26,6 +26,17 @@ class Api::V1::AppointmentsController < ApplicationController
     end
   end
 
+  # POST doctors/:id/appointments
+  def create_on_doctors
+    @appointment = Appointment.new(appointment_params)
+    @appointment.doctor_id = params[:id]
+    if @appointment.save
+      render json: @appointment, status: :created
+    else
+      render json: { error: 'Error creating appointment' }, status: :unprocessable_entity
+    end
+  end
+
   # GET /appointments/1
   def show
     render json: @appointment, status: :ok
@@ -58,6 +69,6 @@ class Api::V1::AppointmentsController < ApplicationController
   end
 
   def appointment_params
-    params.require(:appointment).permit(:date_of_appointment, :time_of_appointment, :description, :doctor_id)
+    params.require(:appointment).permit(:user_id, :date_of_appointment, :time_of_appointment, :description, :doctor_id)
   end
 end

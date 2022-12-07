@@ -8,6 +8,7 @@ Rails.application.routes.draw do
         resources :doctors, only: [:create, :destroy]
       end
       post 'users/login', to: 'users#login'
+      post '/doctors/:id/appointments', to: 'appointments#create_on_doctors'
       get '/users/:id/doctors', to: 'doctors#show_user_doctors'   
       get '/appointments', to: 'appointments#show_all'
       get '/appointments/:id', to: 'appointments#show'
