@@ -17,10 +17,10 @@ Project schema:
 [Frontend](https://github.com/TracK92/doctor-appointment-front-end)
 
 ### Link to front/end kanban board
-- [Link to kanban board](https://github.com/users/TracK92/projects/9)
+- [Front-end kanban board](https://github.com/users/TracK92/projects/9)
 
 ### Link to back/end kanban board
-- [Link to kanban board](https://github.com/users/TracK92/projects/8/views/1)
+- [Back-end kanban board](https://github.com/users/TracK92/projects/8/views/1)
 
 
 ## Deployed version
